@@ -1,5 +1,5 @@
 imei=input()[:15]
-if len(imei)<15:
+if len(imei)<15 or len(imei)>15:
   print("Please enter a valid IMEI")
 else:
   n=0
@@ -9,34 +9,31 @@ else:
   temp1=0
   temptot=0
   for i in imei.split():
-
     if i.isdigit():
-      for j in range(len(i)-1,0,-2):
+      for j in range(len(i)-1,-2,-2):
         #print("j",int(imei[j]))
-        n=int(imei[j])*2
-        print("n",n)
+        #print("j",j)
+        n=int(imei[j])
+        #print("n",n)
         do.append(n)
-        print("first do",do)
-      for k in range(0,len(i)-1,2):
-        o=imei(k)
-        si.append(o)
-  print("si",si)
-  for i in (do):
-
+        #print("first do",do)
+  for j in imei.split():
+    if j.isdigit():
+      for k in range(1,len(i)-1,2):
+        #print("k",k)
+        p=int(imei[k])*2
+        si.append(p)
+  print("si",do)
+  for i in (si):
     if i>9:
-      print("i",i)
-      k=do.index(i)
-   
-      temp=i%10
-    
-      i=i//10
-    
+     # print("i",i)
+      k=si.index(i)   
+      temp=i%10    
+      i=i//10    
       temp1=i
-    
-      temptot=temp+temp1
-    
-      do[k]=temptot
-  print("do",do)
+      temptot=temp+temp1    
+      si[k]=temptot
+  print("do",si)
   vali=sum(do)
   vali1=sum(si)
   kal=vali+vali1
@@ -45,18 +42,3 @@ else:
     print("Valid one!")
   else:
     print("OOPS, Not a valid one!")
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-
